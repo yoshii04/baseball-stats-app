@@ -148,3 +148,7 @@ baseball-stats-app/
 └── tools/baseball_score_v2/       # アプリ本体（CLI・Web API・Web 画面・テスト・docs）
     └── demo/                      # 合成データのデモ（docker compose で画面まで起動）
 ```
+
+## ライセンス
+
+ポートフォリオとしての**閲覧のみ**を目的に公開しています。GitHub 上での閲覧と fork を除き、利用・複製・改変・再配布は許諾していません（[LICENSE](LICENSE)）。
