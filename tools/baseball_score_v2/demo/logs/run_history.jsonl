@@ -1,0 +1,24 @@
+{"timestamp": "2026-06-14T21:05:01", "run_id": "run_20260614_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-14T21:05:04", "run_id": "run_20260614_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-14T21:05:07", "run_id": "run_20260614_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-14T21:05:10", "run_id": "run_20260614_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:01", "run_id": "run_20260621_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:04", "run_id": "run_20260621_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:07", "run_id": "run_20260621_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:10", "run_id": "run_20260621_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:01", "run_id": "run_20260621_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:04", "run_id": "run_20260621_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:07", "run_id": "run_20260621_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-21T21:05:10", "run_id": "run_20260621_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-28T21:05:01", "run_id": "run_20260628_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-28T21:05:04", "run_id": "run_20260628_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-28T21:05:07", "run_id": "run_20260628_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-06-28T21:05:10", "run_id": "run_20260628_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-05T21:05:01", "run_id": "run_20260705_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-05T21:05:04", "run_id": "run_20260705_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-05T21:05:07", "run_id": "run_20260705_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-05T21:05:10", "run_id": "run_20260705_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-12T21:05:01", "run_id": "run_20260712_210500", "step": "validate", "label": "STEP 1: validate    — データ入力バリデーション", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-12T21:05:04", "run_id": "run_20260712_210500", "step": "generate", "label": "STEP 2: generate    — 集計表示・試合入力ファイル生成", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-12T21:05:07", "run_id": "run_20260712_210500", "step": "import_db", "label": "STEP 3: import_db   — DB登録", "status": "OK", "year": 2026, "returncode": 0, "error": null}
+{"timestamp": "2026-07-12T21:05:10", "run_id": "run_20260712_210500", "step": "analytics", "label": "STEP 4: analytics   — 分析Excel出力 (year=2026)", "status": "OK", "year": 2026, "returncode": 0, "error": null}

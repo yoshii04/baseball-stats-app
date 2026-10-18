@@ -1,0 +1,15 @@
+# Docker のビルドコンテキストから、実データ・秘密情報・生成物を除く
+**/.git
+**/node_modules
+**/__pycache__
+**/venv
+**/.env
+**/.env.*
+**/*.xlsx
+**/*.pptx
+**/*.png
+config/secrets.json
+data/
+logs/
+output/
+tmp/

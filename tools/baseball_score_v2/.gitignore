@@ -1,0 +1,33 @@
+# Generated files
+baseball_score.csv
+scoreboard.png
+IMPLEMENTATION_SUMMARY.md
+
+# Temporary SQL files
+tmp/sql/001_add_unique_constraint_batting_stats.sql
+tmp/sql/check/select_data_games.sql
+tmp/sql/check/select_data_player.sql
+
+# Other versions
+../baseball_score_v3/
+../baseball_score_v4/
+
+# 試合入力ファイル・スコアCSV（個人情報を含む可能性があるため除外）
+data/game_inputs/
+data/scores/
+
+# 環境変数ファイル（シークレットを含むため除外）
+docker/.env
+config/secrets.json
+webapp/frontend/.env.local
+webapp/frontend/.env.production
+
+# 実績 Excel / PowerPoint・Excel ロックファイル（個人情報を含むため除外）
+analytics_*.xlsx
+試合記録*.xlsx
+*実績データ.xlsx
+*実績分析.pptx
+~$*
+
+# Screenshots
+../../スクリーンショット\ 2026-02-28\ 12.51.50.png

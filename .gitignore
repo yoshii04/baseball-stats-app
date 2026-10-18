@@ -1,0 +1,33 @@
+# Python 仮想環境
+venv/
+
+# 出力ファイル（Excel など）
+output/
+
+# 重要情報
+key/
+**/config/secrets.json
+
+# データファイル
+data/
+config.json
+
+# Python のキャッシュ
+__pycache__/
+*.pyc
+
+# macOS の隠しファイル
+.DS_Store
+.vscode/
+
+# メモ
+work/
+
+# logファイル（デモ用の合成ログは追跡する）
+logs/
+!tools/baseball_score_v2/demo/logs/
+
+# 練習用ディレクトリ
+zz_practice/
+baseball_score/
+

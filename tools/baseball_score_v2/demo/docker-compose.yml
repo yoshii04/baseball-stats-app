@@ -1,0 +1,67 @@
+# デモ用: 合成データ（架空のチーム・選手・試合）で画面まで一括起動する。
+#
+#   cd tools/baseball_score_v2/demo
+#   docker compose up --build
+#   → http://localhost:8090
+#
+# 現行の構成（docker/docker-compose.yml）とは別のプロジェクト・別のボリュームで動く。
+# ホスト側に公開するのは画面（8090）だけで、API と DB はコンテナ内に閉じる。
+# 認証は行わない（DEMO_MODE）。ローカル確認専用で、外部に公開しないこと。
+name: baseball-demo
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: baseball
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      # 初回起動時（空のボリュームのとき）だけ、ファイル名順に実行される
+      - ../docker/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+      - ./seed.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo -d baseball"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ..
+      dockerfile: webapp/backend/Dockerfile
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: demo
+      DB_PASSWORD: demo
+      DB_NAME: baseball
+      DB_SSLMODE: disable
+      TEAM_NAME: サンプル高校
+      DEMO_MODE: "true"
+      ENV: development
+      PYTHONPATH: /app
+    volumes:
+      - ./logs:/app/logs:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ../webapp/frontend
+      dockerfile: Dockerfile.demo
+    ports:
+      - "127.0.0.1:8090:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  db_data:

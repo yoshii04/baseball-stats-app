@@ -1,0 +1,75 @@
+name: CI/CD Deploy
+
+on:
+  # test: main への push と PR で自動実行する
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # deploy: AWS（EC2）を停止している間は自動実行しない。
+  # デプロイするときだけ、Actions タブの "Run workflow" から手動で実行する。
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  # ─────────────────────────────────────────
+  # Job 1: テスト
+  # ─────────────────────────────────────────
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/baseball_score_v2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r webapp/backend/requirements.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -t . -p "test_*.py" -v
+        env:
+          DB_HOST: localhost
+          DB_PORT: "5432"
+          DB_USER: test
+          DB_PASSWORD: test
+          DB_NAME: test
+          DB_SSLMODE: disable
+          TEAM_NAME: test
+
+  # ─────────────────────────────────────────
+  # Job 2: EC2 デプロイ（手動実行かつテスト成功時のみ）
+  # ─────────────────────────────────────────
+  deploy:
+    needs: test
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          envs: GITHUB_TOKEN
+          script: |
+            set -e
+            cd /srv/baseball
+            git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/yoshii04/baseball-stats-app.git
+            git pull origin main
+            git remote set-url origin https://github.com/yoshii04/baseball-stats-app.git
+            cd tools/baseball_score_v2/docker
+            DOCKER_BUILDKIT=0 docker compose up --build -d
+            docker compose ps
