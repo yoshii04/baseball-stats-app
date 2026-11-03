@@ -1,0 +1,54 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # 新しく公表された脆弱性を拾うため、週1回（土曜 09:00 JST）実行する
+    - cron: "0 0 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pip-audit:
+    name: pip-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pip-audit
+        run: pip install pip-audit==2.10.1
+
+      # fastapi 経由の starlette など間接依存も検査する
+      - name: pip-audit
+        run: |
+          pip-audit -r tools/baseball_score_v2/requirements.txt
+          pip-audit -r tools/baseball_score_v2/webapp/backend/requirements.txt
+
+  npm-audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/baseball_score_v2/webapp/frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # lockfile のみで検査できるため install は不要。ビルド時に入る本番依存を対象に high 以上で失敗させる
+      - name: npm audit
+        run: npm audit --package-lock-only --omit=dev --audit-level=high

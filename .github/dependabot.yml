@@ -1,0 +1,40 @@
+version: 2
+updates:
+  # CLI と Web アプリのバックエンドは同じバージョンに揃える運用のため、1 つの PR にまとめる
+  - package-ecosystem: pip
+    directories:
+      - /tools/baseball_score_v2
+      - /tools/baseball_score_v2/webapp/backend
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: Asia/Tokyo
+    groups:
+      python-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /tools/baseball_score_v2/webapp/frontend
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: Asia/Tokyo
+    groups:
+      npm-deps:
+        patterns: ["*"]
+
+  - package-ecosystem: docker
+    directories:
+      - /tools/baseball_score_v2/webapp/backend
+      - /tools/baseball_score_v2/webapp/frontend
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: Asia/Tokyo
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: Asia/Tokyo
