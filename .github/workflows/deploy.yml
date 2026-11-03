@@ -6,6 +6,10 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # 週1回（月曜 09:00 JST）test を実行し、依存やベースイメージの変化による不具合を早期に検知する
+  #（deploy は workflow_dispatch のときだけ動くため、定期実行ではデプロイされない）
+  schedule:
+    - cron: "0 0 * * 1"
   # deploy: AWS（EC2）を停止している間は自動実行しない。
   # デプロイするときだけ、Actions タブの "Run workflow" から手動で実行する。
   workflow_dispatch:
