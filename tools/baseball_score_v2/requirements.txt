@@ -1,9 +1,9 @@
 # CLI ツール・DB 取込
-pandas==2.3.2
+pandas==3.1.0
 openpyxl==3.1.5
-psycopg2-binary==2.9.11
+psycopg2-binary==2.9.13
 
 # Web アプリ（webapp/backend）
 # webapp/backend/requirements.txt と同じバージョンに揃えること
-fastapi==0.135.2
-uvicorn[standard]==0.42.0
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
