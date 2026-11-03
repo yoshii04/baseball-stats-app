@@ -7,7 +7,7 @@ updates:
       - /tools/baseball_score_v2/webapp/backend
     schedule:
       interval: weekly
-      day: monday
+      day: saturday
       timezone: Asia/Tokyo
     groups:
       python-deps:
@@ -17,7 +17,7 @@ updates:
     directory: /tools/baseball_score_v2/webapp/frontend
     schedule:
       interval: weekly
-      day: monday
+      day: saturday
       timezone: Asia/Tokyo
     groups:
       npm-deps:
@@ -29,12 +29,12 @@ updates:
       - /tools/baseball_score_v2/webapp/frontend
     schedule:
       interval: weekly
-      day: monday
+      day: saturday
       timezone: Asia/Tokyo
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-      day: monday
+      day: saturday
       timezone: Asia/Tokyo

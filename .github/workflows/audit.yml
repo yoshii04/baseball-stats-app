@@ -5,8 +5,8 @@ on:
     branches: [main]
   pull_request:
   schedule:
-    # 新しく公表された脆弱性を拾うため、週1回（月曜 09:00 JST）実行する
-    - cron: "0 0 * * 1"
+    # 新しく公表された脆弱性を拾うため、週1回（土曜 09:00 JST）実行する
+    - cron: "0 0 * * 6"
   workflow_dispatch:
 
 permissions:
